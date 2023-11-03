@@ -26,6 +26,6 @@ steps:
 #     - "app.yaml" # Path to your app.yaml configuration file
 #   timeout: "1600s"
 # # images: ['gcr.io/abstract-web-393206/image:amzu']
-options:
-  logging: CLOUD_LOGGING_ONLY
+# options:
+#   logging: CLOUD_LOGGING_ONLY
 
