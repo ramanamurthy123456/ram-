@@ -3,5 +3,5 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return 'welcome to amzu version1'
+def hello():
+    return 'Hello, World!'

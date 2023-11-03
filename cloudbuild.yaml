@@ -1,18 +1,39 @@
+# steps:
+# - name: 'gcr.io/cloud-builders/git'
+#   args: ['clone', 'https://github.com/ramanamurthy123456/ram-.git']
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'gcr.io/key-component-402312/image:2', './ram-']
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'gcr.io/key-component-402312/image:2']
+# # - name: 'gcr.io/cloud-builders/gcloud'
+# #   args: ['app', 'create-service', 'helloworld', '--region', 'us-central']
+# #   timeout: '1600s'
+# - name: "gcr.io/cloud-builders/gcloud"
+#   args:
+#     - "app"
+#     - "deploy"
+#     - "app.yaml" # Path to your app.yaml configuration file
+#   timeout: "1600s"
+# # images: ['gcr.io/abstract-web-393206/image:amzu']
+# options:
+#   logging: CLOUD_LOGGING_ONLY
 steps:
-- name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/ramanamurthy123456/ram-.git']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/key-component-402312/image:2', './ram-']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/key-component-402312/image:2']
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args: ['app', 'create-service', 'helloworld', '--region', 'us-central']
-#   timeout: '1600s'
+# Step 1: Build and install dependencies (if any)
+- name: "gcr.io/cloud-builders/docker"
+  args:
+    - "build"
+    - "-t"
+    - "gcr.io/key-component-402312/my-app"
+    - "."
+- name: "gcr.io/key-component-402312/docker"
+  args:
+    - "push"
+    - "gcr.io/key-component-402312/my-app"
 
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['app', 'deploy', '--image-url', 'gcr.io/key-component-402312/image:2']
-  timeout: '1600s'
-# images: ['gcr.io/abstract-web-393206/image:amzu']
-options:
-  logging: CLOUD_LOGGING_ONLY
+# Step 2: Deploy the application to App Engine
+- name: "gcr.io/cloud-builders/gcloud"
+  args:
+    - "app"
+    - "deploy"
+    - "app.yaml" # Path to your app.yaml configuration file
+  timeout: "1600s" # Adjust the timeout based on your deployment's complexity
