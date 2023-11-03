@@ -9,7 +9,8 @@ steps:
 #   args: ['app', 'create-service', 'helloworld', '--region', 'us-central']
 #   timeout: '1600s'
 
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
   args: ['app', 'deploy', '--image-url', 'gcr.io/key-component-402312/image:2']
   timeout: '1600s'
 # images: ['gcr.io/abstract-web-393206/image:amzu']
