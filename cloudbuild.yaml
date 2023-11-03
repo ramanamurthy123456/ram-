@@ -1,8 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/ramanamurthy123456/ram.git']
+  args: ['clone', 'https://github.com/ramanamurthy123456/ram-.git']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/key-component-402312/image:2', './ram']
+  args: ['build', '-t', 'gcr.io/key-component-402312/image:2', './ram-']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/key-component-402312/image:2']
 - name: 'gcr.io/cloud-builders/gcloud'

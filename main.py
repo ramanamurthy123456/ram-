@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'welcome to amzu version2'
+    return 'welcome to amzu version1'
