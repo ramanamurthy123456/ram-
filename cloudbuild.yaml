@@ -12,10 +12,9 @@ steps:
   entrypoint: 'bash'
   args:
   - '-c'
-  - |
-    gcloud auth configure-docker
-    docker pull gcr.io/key-component-402312/image:2
-    gcloud app deploy --image-url=gcr.io/key-component-402312/image:2 --quiet
+  - 'gcloud auth configure-docker'
+  - 'docker pull gcr.io/key-component-402312/image:2'
+  - 'gcloud app deploy --image-url=gcr.io/key-component-402312/image:2 --quiet'
   timeout: '1600s'
 # images:
 # - 'gcr.io/$PROJECT_ID/my-image:$COMMIT_SHA'
